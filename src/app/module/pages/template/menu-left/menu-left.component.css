@@ -1,0 +1,64 @@
+.example-menu {
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 180px;
+    max-width: 280px;
+    background-color: rgb(255, 255, 255);
+    padding: 6px 0;
+  }
+  
+  .example-menu-item {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+  
+    user-select: none;
+    min-width: 64px;
+    line-height: 36px;
+    padding: 0 16px;
+  
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex: 1;
+  }
+  
+  .example-menu-item:hover {
+    background-color: rgb(208, 208, 208);
+  }
+  
+  .example-menu-item:active {
+    background-color: rgb(170, 170, 170);
+  }
+
+  section {
+    display: table;
+  }
+  
+  .example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+  }
+  
+  .example-button-row {
+    display: table-cell;
+    width: 490px;
+  }
+  
+  .example-button-row .mat-button-base {
+    margin: 8px 8px 8px 0;
+  }
+  
+  .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
