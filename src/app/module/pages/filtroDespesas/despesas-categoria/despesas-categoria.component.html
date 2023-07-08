@@ -1,1 +1,41 @@
-<p>despesas-categoria works!</p>
+<section class="content-header">
+    <p-toast [style]="{marginTop: '30px'}"></p-toast>
+    <h1>
+      Despesas Orçamentárias
+      <small>Totais Agrupados por Categoria</small>
+    </h1>
+  </section>
+  <div class="mat-elevation-z8" style="height: 85%">
+      <div style="width: 50%;  display: inline-block;">
+      
+        <table mat-table [dataSource]="dataSource">
+      
+          <!-- Categoria Column -->
+          <ng-container matColumnDef="categoria">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Categoria </th>
+            <td mat-cell *matCellDef="let despesa" style="text-align: center;"> {{despesa.categoria}} </td>
+          </ng-container>
+      
+          <!-- Valot Total Column -->
+          <ng-container matColumnDef="valorTotal">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Valor Total </th>
+            <td mat-cell *matCellDef="let despesa" style="text-align: center;"> {{mascaraMonetaria(despesa.valorTotal)}} </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <!--Paginação-->
+        <mat-paginator [pageSizeOptions]="[10, 20]"
+                      showFirstLastButtons 
+                      aria-label="Select page of periodic despesas">
+        </mat-paginator>
+  
+      </div>
+  
+      <div style="width: 50%;  display: inline-block; float: right;">
+        <canvas  id="MyChart" >{{ grafico }}</canvas>
+      </div>
+  
+    </div> 

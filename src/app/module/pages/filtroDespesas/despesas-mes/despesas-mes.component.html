@@ -5,34 +5,37 @@
     <small>Totais Mensais</small>
   </h1>
 </section>
-<div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
-  
-      <!-- Position Column -->
-      <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let despesa"> {{despesa.position}} </td>
-      </ng-container>
-  
-      <!-- Mês Column -->
-      <ng-container matColumnDef="mes">
-        <th mat-header-cell *matHeaderCellDef> Mês </th>
-        <td mat-cell *matCellDef="let despesa"> {{despesa.mes}} </td>
-      </ng-container>
-  
-      <!-- Valot Total Column -->
-      <ng-container matColumnDef="valorTotal">
-        <th mat-header-cell *matHeaderCellDef> Valor Total </th>
-        <td mat-cell *matCellDef="let despesa"> {{despesa.valorTotal}} </td>
-      </ng-container>
-     
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  
-     <!--Paginação-->
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                   showFirstLastButtons 
-                   aria-label="Select page of periodic despesas">
-    </mat-paginator>
-  </div>
+<div class="mat-elevation-z8" style="height: 85%">
+    <div style="width: 50%;  display: inline-block;">
+    
+      <table mat-table [dataSource]="dataSource">
+    
+        <!-- Mês Column -->
+        <ng-container matColumnDef="mes">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Mês </th>
+          <td mat-cell *matCellDef="let despesa" style="text-align: center;"> {{obterNomeMes(despesa.mes)}} </td>
+        </ng-container>
+    
+        <!-- Valot Total Column -->
+        <ng-container matColumnDef="valorTotal">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Valor Total </th>
+          <td mat-cell *matCellDef="let despesa" style="text-align: center;"> {{mascaraMonetaria(despesa.valorTotal)}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    
+      <!--Paginação-->
+      <mat-paginator [pageSizeOptions]="[10, 20]"
+                    showFirstLastButtons 
+                    aria-label="Select page of periodic despesas">
+      </mat-paginator>
+
+    </div>
+
+    <div style="width: 50%;  display: inline-block; float: right;">
+      <canvas  id="MyChart" >{{ grafico }}</canvas>
+    </div>
+
+  </div> 

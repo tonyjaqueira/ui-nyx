@@ -1,1 +1,41 @@
-<p>origem-recurso works!</p>
+<section class="content-header">
+    <p-toast [style]="{marginTop: '30px'}"></p-toast>
+    <h1>
+      Despesas Orçamentárias
+      <small>Origem dos Recursos</small>
+    </h1>
+  </section>
+  <div class="mat-elevation-z8" style="height: 85%">
+      <div style="width: 50%;  display: inline-block;">
+      
+        <table mat-table [dataSource]="dataSource">
+      
+          <!-- Origem Column -->
+          <ng-container matColumnDef="origem">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Origem </th>
+            <td mat-cell *matCellDef="let despesa" style="text-align: center;"> {{despesa.origemRecurso}} </td>
+          </ng-container>
+      
+          <!-- Valot Total Column -->
+          <ng-container matColumnDef="valorTotal">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Valor Total </th>
+            <td mat-cell *matCellDef="let despesa" style="text-align: center;"> {{mascaraMonetaria(despesa.valorEmpenhado)}} </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <!--Paginação-->
+        <mat-paginator [pageSizeOptions]="[10, 20]"
+                      showFirstLastButtons 
+                      aria-label="Select page of periodic despesas">
+        </mat-paginator>
+  
+      </div>
+  
+      <div style="width: 50%;  display: inline-block; float: right;">
+        <canvas  id="MyChart" >{{ grafico }}</canvas>
+      </div>
+  
+    </div> 

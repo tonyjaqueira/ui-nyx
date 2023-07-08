@@ -60,6 +60,7 @@ import { DespesasMesComponent } from './filtroDespesas/despesas-mes/despesas-mes
 import { DespesasCategoriaComponent } from './filtroDespesas/despesas-categoria/despesas-categoria.component';
 import { OrigemRecursoComponent } from './filtroDespesas/origem-recurso/origem-recurso.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -128,6 +129,11 @@ import { HttpClientModule } from '@angular/common/http';
     PortalModule,
     ScrollingModule,
     DialogModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

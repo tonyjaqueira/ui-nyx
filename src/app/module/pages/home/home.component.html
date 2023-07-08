@@ -1,1 +1,71 @@
-<div class="container"></div>
+<section class="content-header">
+    <p-toast [style]="{marginTop: '30px'}"></p-toast>
+    <h1>
+      Despesas Orçamentárias
+      <small>Filtro Despesas</small>
+    </h1>
+  </section>
+
+  <div style="margin-bottom: 10px; margin-top: 20px; font-weight: 700;">
+    <mat-label>Digite o Filtro</mat-label>
+    <input style="background-color: antiquewhite; font-size: 12px;" matInput (keyup)="aplicarFiltro($event)" placeholder="Ex. Mia" #input>
+  </div>
+  
+
+  <div class="mat-elevation-z8" style="height: 85%">
+
+        <table mat-table [dataSource]="dataSource">
+      
+          <!-- Ano Column -->
+          <ng-container matColumnDef="ano_movimentacao">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Ano Movimentação </th>
+            <td mat-cell *matCellDef="let despesa" style="text-align: center; font-size: 10px"> {{despesa.ano_movimentacao}} </td>
+          </ng-container>
+
+          <!-- Mês Column -->
+          <ng-container matColumnDef="mes_movimentacao">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Mês Movimentação </th>
+            <td mat-cell *matCellDef="let despesa" style="text-align: center; font-size: 10px"> {{despesa.mes_movimentacao}} </td>
+          </ng-container>
+
+          <!-- Òrgão Column -->
+          <ng-container matColumnDef="orgao_nome">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Órgão </th>
+            <td mat-cell *matCellDef="let despesa" style="text-align: center; font-size: 10px"> {{despesa.orgao_nome}} </td>
+          </ng-container>
+
+          <!-- Unidade Column -->
+          <ng-container matColumnDef="unidade_nome">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Unidade </th>
+            <td mat-cell *matCellDef="let despesa" style="text-align: center; font-size: 10px"> {{despesa.unidade_nome}} </td>
+          </ng-container>
+
+          <!-- Categoria Column -->
+          <ng-container matColumnDef="categoria_economica_nome">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Categoria </th>
+            <td mat-cell *matCellDef="let despesa" style="text-align: center; font-size: 10px"> {{despesa.categoria_economica_nome}} </td>
+          </ng-container>
+
+          <!-- Grupo Column -->
+          <ng-container matColumnDef="grupo_despesa_nome">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Grupo </th>
+            <td mat-cell *matCellDef="let despesa" style="text-align: center; font-size: 10px"> {{despesa.grupo_despesa_nome}} </td>
+          </ng-container>
+      
+          <!-- Valor Pago Column -->
+          <ng-container matColumnDef="valor_pago">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Valor Pago </th>
+            <td mat-cell *matCellDef="let despesa" style="text-align: center; font-size: 10px"> {{mascaraMonetaria(despesa.valor_pago)}} </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <!--Paginação-->
+        <mat-paginator [pageSizeOptions]="[10, 20]"
+                      showFirstLastButtons 
+                      aria-label="Select page of periodic despesas">
+        </mat-paginator>
+  
+    </div> 

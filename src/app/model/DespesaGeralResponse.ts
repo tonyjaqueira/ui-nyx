@@ -3,7 +3,7 @@ export class DespesaGeralResponse{
 
     id!: number;
     anoMovimentacao!: number;
-    mesMovimentacao!: number;
+    mesMovimentacao!: any;
     orgaoCodigo!: number;
     orgaoNome!: string;
     unidadeCodigo!: number;

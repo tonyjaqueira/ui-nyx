@@ -9,25 +9,25 @@ import { Router } from '@angular/router';
 export class MenuLeftComponent implements OnInit {
   
 
-  constructor(private router: Router) { }
+  constructor(private _router: Router) { }
 
   ngOnInit(): void {
   }
 
   filtrarDespesas(){
-    this.router.navigate(['/home']);
+    this._router.navigate(['/home']);
   }
 
   filtrarDespesasMes(){
-    this.router.navigate(['/despesas-mes']);
+    this._router.navigate(['/despesas-mes']);
   }
 
   filtrarDespesasCategoria(){
-    this.router.navigate(['/despesas-categoria']);
+    this._router.navigate(['/despesas-categoria']);
   }
 
   filtrarOrigemRecursos(){
-    this.router.navigate(['/origem-recurso']);
+    this._router.navigate(['/origem-recurso']);
   }
 
 }
